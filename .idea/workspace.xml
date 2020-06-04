@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d108637b-a069-4c2d-aae9-635a9a7622a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby-app" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-app" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby-app/gatsby-node.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-app/gatsby-node.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-app/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gatsby-app/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+            <state relative-caret-position="-493">
+              <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -62,6 +59,7 @@
         <option value="$PROJECT_DIR$/gatsby-app/package.json" />
         <option value="$PROJECT_DIR$/api/package.json" />
         <option value="$PROJECT_DIR$/gatsby-app/gatsby-node.js" />
+        <option value="$PROJECT_DIR$/gatsby-app/.gitignore" />
       </list>
     </option>
   </component>
@@ -156,12 +154,12 @@
       <updated>1591265386608</updated>
       <workItem from="1591265390767" duration="724000" />
       <workItem from="1591267969555" duration="19000" />
-      <workItem from="1591268197045" duration="3424000" />
+      <workItem from="1591268197045" duration="4820000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4167000" />
+    <option name="totallyTimeSpent" value="5563000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -221,8 +219,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gatsby-app/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        <state relative-caret-position="-493">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
         </state>
       </provider>
     </entry>
