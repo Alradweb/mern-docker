@@ -1,6 +1,0 @@
-{
-  "port": 5000,
-  "mongoUri": "mongodb+srv://alex:1111@cluster0-1nej6.azure.mongodb.net/app?retryWrites=true&w=majority",
-  "jwtSecret": "To be, or not to be, that is the question",
-  "baseUrl": "http://localhost:5000"
-}

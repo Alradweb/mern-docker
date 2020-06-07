@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken")
-const config = require("config")
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+const {JWT_SECRET} = process.env
 
 module.exports = (req, res, next) => {
   if (req.method === "OPTIONS") {
@@ -14,7 +15,7 @@ module.exports = (req, res, next) => {
       return res.status(401).json({ message: "Нет авторизации" })
     }
 
-    req.user = jwt.verify(token, config.get("jwtSecret"))
+    req.user = jwt.verify(token, JWT_SECRET)
 
     next()
 

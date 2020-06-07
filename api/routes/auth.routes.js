@@ -2,8 +2,8 @@ const {Router} = require('express')
 const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator')
 const jwt = require('jsonwebtoken')
-
-const config = require('config')
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+const {JWT_SECRET} = process.env
 const User = require('../models/User')
 const router = Router()
 
@@ -67,7 +67,6 @@ router.post('/login',
             }
             const {email, password} = req.body
             const user = await User.findOne({email})
-            console.log('USER----', user)
             if (!user) return res.status(400).json({message: 'Пользователь не найден'})
             const passwordMatch = await bcrypt.compare(password, user.password)
             if (!passwordMatch) return res.status(400).json({message: 'Неверный пароль'})
@@ -76,7 +75,7 @@ router.post('/login',
                     email: user.email,
                     id: user._id
                 },
-                config.get('jwtSecret'),
+                JWT_SECRET,
                 {expiresIn: '1h'}
                 )
 
