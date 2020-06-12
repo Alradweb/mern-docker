@@ -3,7 +3,7 @@ FROM node:lts-alpine
 WORKDIR /usr/src/app
 
 COPY ./package.json /usr/src/app/package.json
-COPY ./app.js /usr/src/app/app.js
+COPY . .
 
 RUN npm i --production
 RUN apk add curl
