@@ -2,10 +2,12 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
-const dev = process.env.NODE_ENV !== 'production'
-if (dev) require('dotenv').config()
-const {PORT, DB_NAME, DB_URL} = process.env
-const mongoUri = `mongodb${dev ? '+srv' : ''}://${DB_NAME}/${DB_URL}`
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+
+const {PORT, CLOUD_MONGODB, NODE_ENV} = process.env
+const mongoUri = NODE_ENV === 'production' ? `mongodb://db:27017/db` : CLOUD_MONGODB
+
+console.log('MONGO_URI: ', mongoUri)
 const app = express()
 
 app.use(bodyParser.json())

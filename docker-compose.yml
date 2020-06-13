@@ -1,0 +1,69 @@
+version: "2.4"
+
+services:
+  proxy:
+    image: docker/proxy
+    build: ./nginx
+    container_name: proxy
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    healthcheck:
+      test: curl -f localhost/ & curl -f localhost/api/ping || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      - webhost
+      - api
+    networks:
+      - front
+      - back
+
+  webhost:
+    image: docker/frontend
+    build: ./gatsby-app
+    container_name: webhost
+    healthcheck:
+      test: curl -f localhost/ || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      - api
+    networks:
+      - front
+  api:
+    image: docker/backend
+    build: ./api
+    container_name: api
+    environment:
+      - NODE_ENV="production"
+      - PORT=4000
+      - JWT_SECRET="To be, or not to be, that is the question"
+      - BASE_URL=localhost:4000
+    healthcheck:
+      test: curl localhost:4000/api/ping
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      - db
+    networks:
+      - back
+
+  db:
+    image: mongo
+    container_name: db
+    ports:
+      - "27017:27017"
+    volumes:
+      - /data/db
+    networks:
+      - back
+networks:
+  front:
+    driver: bridge
+  back:
+    driver: bridge
