@@ -1,45 +1,30 @@
-version: "2.4"
+version: "3.4"
 
 services:
   proxy:
     image: docker/proxy
-    build: ./nginx
+    build: ./gatsby-app
     container_name: proxy
     ports:
       - 80:80
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./gatsby-app/nginx.conf:/etc/nginx/nginx.conf:ro
     healthcheck:
       test: curl -f localhost/ & curl -f localhost/api/ping || exit 1
-      interval: 10s
+      interval: 90s
       timeout: 10s
       retries: 5
     depends_on:
-      - webhost
       - api
     networks:
       - front
       - back
-
-  webhost:
-    image: docker/frontend
-    build: ./gatsby-app
-    container_name: webhost
-    healthcheck:
-      test: curl -f localhost/ || exit 1
-      interval: 10s
-      timeout: 10s
-      retries: 5
-    depends_on:
-      - api
-    networks:
-      - front
   api:
     image: docker/backend
     build: ./api
     container_name: api
     environment:
-      - NODE_ENV="production"
+      - NODE_ENV=production
       - PORT=4000
       - JWT_SECRET="To be, or not to be, that is the question"
       - BASE_URL=localhost:4000
@@ -60,6 +45,12 @@ services:
       - "27017:27017"
     volumes:
       - /data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 50s
     networks:
       - back
 networks:
